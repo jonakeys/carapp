@@ -23,13 +23,21 @@ int main()
     vector<Car> Autos;
     vector<Car>::iterator it;
     int weight, length, maxspeed;
-    string name;
+    string name, line;
+    fstream bestand;
     
     // Main application loop
     while(GO) {
-	cout << "(1) Voeg auto toe\n" // Menu
-	     << "(2) Print informatie\n"
-	     << "(3) Stoppen\n" 
+	cout << "Welkom bij CARAPP\n\n" // Menu
+	     << "-- Data\n"
+	     << "(1) Voeg auto toe\n"
+	     << "(2) Toon nieuw informatie\n"
+	     << "-- Bestand\n"
+	     << "(3) Lees inhoud uit bestand\n"
+	     << "(4) Opslaan nieuw info naar bestand\n"
+	     << "(5) Wis inhoud bestand\n"
+	     << "-- Algemeen\n"
+	     << "(9) Stoppen\n" 
 	     << "Maak je keuze: ";
 	cin >> choice;
 	switch (choice) {
@@ -56,7 +64,42 @@ int main()
 	    else
 		cout << "Er zijn nog geen auto's toegevoegd.\n";
 	    break;
-	case 3: // Exit the application
+	case 3:
+	    bestand.open("carapp.txt", ios::in);
+	    if(bestand.is_open()) {
+		cout << "-- BEGIN BESTAND 'CARAPP.TXT' --\n";
+		while(bestand) {
+		    getline(bestand,line);
+		    cout << line << endl;
+		}
+		bestand.close();
+		cout << "-- EINDE BESTAND --\n";
+	    }
+	    else
+		cout << "Bestand 'carapp.txt' kon niet worden geopend.\n";
+	    break;
+	case 4:
+	    if (Autos.size() != 0) { // Save the data to a file called 'carapp.txt'
+		for(it = Autos.begin(); it < Autos.end(); ++it) {
+		    it->saveToFile();
+		}
+		cout << "Bestand 'carapp.txt' is succesvol opgeslagen!\n";
+	    }
+	    else
+		cout << "Er zijn nog geen auto's toegevoegd.\n";
+	    break;
+	case 5:
+	    bestand.open("carapp.txt", ios::in);
+	    if(bestand.is_open()) {
+		bestand.close();
+		bestand.open("carapp.txt", ios::out | ios::trunc);
+		bestand.close();
+		cout << "Bestand 'carapp.txt' leeggemaakt.\n";
+	    }
+	    else
+		cout << "Bestand 'carapp.txt' kon niet worden geopend.";
+	    break;
+	case 9: // Exit the application
 	    cout << "Tot ziens!\n";
 	    GO = false;
 	    break;

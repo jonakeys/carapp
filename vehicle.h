@@ -3,6 +3,7 @@
 
 #include <string>
 #include <iostream>
+#include <fstream>
 using namespace std;
 
 class Vehicle
@@ -19,6 +20,7 @@ public:
     string getName() const;
     void setName(string name);
     void printData();
+    void saveToFile();
 private:
     int itsWeight;
     int itsLength;
