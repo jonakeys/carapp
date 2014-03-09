@@ -10,7 +10,7 @@ using namespace std;
 class Car : public Vehicle
 {
 public:
-    Car(int weight, int length, int maxspeed, string name);
+    Car(int weight, float length, int maxspeed, string name);
     ~Car();
 private:
 };

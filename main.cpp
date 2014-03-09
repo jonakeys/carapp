@@ -22,13 +22,14 @@ int main()
     int choice = 0;
     vector<Car> Autos;
     vector<Car>::iterator it;
-    int weight, length, maxspeed;
+    int weight, maxspeed;
+    float length;
     string name, line;
     fstream bestand;
     
     // Main application loop
     while(GO) {
-	cout << "Welkom bij CARAPP\n\n" // Menu
+	cout << "Welkom bij CARAPP\n" // Menu
 	     << "-- Data\n"
 	     << "(1) Voeg auto toe\n"
 	     << "(2) Toon nieuw informatie\n"

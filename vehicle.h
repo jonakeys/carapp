@@ -9,12 +9,12 @@ using namespace std;
 class Vehicle
 {
 public:
-    Vehicle(int weight, int length, int maxspeed, string name);
+    Vehicle(int weight, float length, int maxspeed, string name);
     ~Vehicle();
     int getWeight() const;
     void setWeight(int weight);
-    int getLength() const;
-    void setLength(int length);
+    float getLength() const;
+    void setLength(float length);
     int getMaxSpeed() const;
     void setMaxSpeed(int maxspeed);
     string getName() const;
@@ -23,7 +23,7 @@ public:
     void saveToFile();
 private:
     int itsWeight;
-    int itsLength;
+    float itsLength;
     int itsMaxSpeed;
     string itsName;
 };
